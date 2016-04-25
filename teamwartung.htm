@@ -1,0 +1,110 @@
+<!-- 
+  Author: P.I.C.S. Salzburg, http://www.pics.co.at, office@pics.co.at
+  Page: teamwartung.htm
+  Desc: Wartung Team
+  date: 10-07-2001 gc
+  (c) 2001 by Ing. Christian Groesswang / P.I.C.S.
+-->
+
+
+<html>
+<head>
+	<title>SAR - Teamwartung</title>
+	<link rel="STYLESHEET" type="text/css" href="css/default.css">
+	<script language="JavaScript" src="js/dynlayer.js"></script>
+	<script language="JavaScript" src="js/team.js"></script>
+	<script language="JavaScript" src="team.js"></script>
+<style type="text/css">
+	A  		  { text-decoration : none;}
+	A:Active  { color : #FF0000;}
+	A:Hover   { color : #FF0000;}
+</style>
+
+<script>
+
+function prepareSave()
+{
+	var jscode=new Array();
+	var txt='';
+	var state=true;
+	frm=document.forms['editform'];
+	for (j = 0; j < aTeam.length+3; j++) 
+	{
+		pos=j+1;
+		nPos=frm['pos'+pos].value;
+		nName=frm['name'+pos].value;
+		nFunkt=frm['funkt'+pos].value;
+		nBild=frm['bild'+pos].value;
+		// jede Zeile auslesen
+		if (nPos!='' && nName!='')
+		{
+			if (jscode[nPos])
+			{
+				alert('Doppelbelegung bei Position '+nPos);
+				state=false;
+			}
+			jscode[nPos]='addF("'+nName+'","'+nFunkt+'","'+nBild+'");\n';
+		}
+		//addF('Binder Michael','','binder_michael.jpg');
+	}
+	for (j = 0; j < aTeam.length+3; j++) 
+	{
+		if (jscode[j]!='' && jscode[j])
+		{
+			txt+=jscode[j];
+		}
+	}		
+	document.forms['saveform'].js.value=txt;
+//	alert(txt);
+	return state;
+}
+
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+<!-- Form zum bearbeiten -->
+<form name="editform">
+<table border="0" cellpadding="0" cellspacing="1">
+<tr bgcolor="#CCCCCC">
+	<td class="ar9s"><b>Pos</b></td>
+	<td class="ar9s"><b>Name</b></td>
+	<td class="ar9s"><b>Funktion</b></td>
+	<td class="ar9s"><b>Bild</b></td>
+</tr>
+<script>
+	var html='';
+	var pos=0;
+	for (j = 0; j < aTeam.length; j++) 
+	{
+		pos=j+1;
+		html+='<tr bgcolor="#EFEFEF">';
+		html+='<td class="ar9s"><input type="text" size="2" value="'+pos+'" name="pos'+pos+'"></td>';
+		html+='<td class="ar9s"><input type="text" size="30" value="'+aTeam[j][0]+'" name="name'+pos+'"></td>';
+		html+='<td class="ar9s"><input type="text" size="30" value="'+aTeam[j][1]+'" name="funkt'+pos+'"></td>';
+		html+='<td class="ar9s"><input type="text" size="30" value="'+aTeam[j][2]+'" name="bild'+pos+'"></td>';
+		html+='</tr>';
+	}
+	// jetzt noch 3 leere
+	for (j = 0; j < 3; j++) 
+	{
+		pos++;
+		html+='<tr bgcolor="#EFEF00">';
+		html+='<td class="ar9s"><input type="text" size="2" value="'+pos+'" name="pos'+pos+'"></td>';
+		html+='<td class="ar9s"><input type="text" size="30" value="" name="name'+pos+'"></td>';
+		html+='<td class="ar9s"><input type="text" size="30" value="" name="funkt'+pos+'"></td>';
+		html+='<td class="ar9s"><input type="text" size="30" value="" name="bild'+pos+'"></td>';
+		html+='</tr>';
+	}
+	document.write(html);
+</script>
+</table>
+</form>
+<span class="ar9s">Zum L&ouml;schen einer Zeile einfach den Namen l&ouml;schen!</span><br>
+<!-- Form zum Speichern -->
+<form name="saveform" action="scripts/saveteam.pl" method="POST" onsubmit="return prepareSave()">
+<input type="hidden" name="js" value="">
+<input type="submit" value="SPEICHERN">
+</form>
+</body>
+</html>

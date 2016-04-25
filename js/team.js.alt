@@ -1,0 +1,93 @@
+// javascript fuer Skoda Zubehoer
+// (c) Ing. Christian Groesswang, P.I.C.S., http://www.pics.co.at
+// Version 24-04-2001, gc
+
+
+var aTeam = new Array();
+var gCurrentteam = 0;			// aktuelle Kategorie
+
+function addF(pName,pFunktion, pBild)
+{
+
+	var newPos=aTeam.length;
+	// und die Elemente einfügen
+	aTeam[newPos]=new Array(pName,pFunktion, pBild);
+	// 							0		1		2		3		4		5		6	7		8
+}
+
+function teamCreateRow(pID,pBGColor)
+{
+	// erzeugt eine Zeile des Artikels
+	
+	var html='';
+	html+='<tr><td width="220" bgcolor="#'+pBGColor+'" class="team'+pBGColor+'">&nbsp;';
+	html+='<a href="javascript:teamShowInfo('+pID+')" class="team'+pBGColor+'">'+aTeam[pID][0]+'</a>';
+	html+='</td></tr>';
+	return html;
+}
+	
+function teamTabelle()
+{
+	// Gibt die Liste der Artikel der Kategorie aus
+	var html='';
+	var bgColor='F9F9F9';
+	html+='<table cellspacing="0" cellpadding="1" border="0">';
+	for (j = 0; j < aTeam.length; j++) 
+	{
+		if (bgColor=='F9F9F9')
+		{
+			bgColor='007FFF'
+		}
+		else
+		{
+			bgColor='F9F9F9'
+		}
+		html=html+teamCreateRow(j,bgColor);
+	}
+	html+='</td></tr></table>';
+	return html;
+}
+
+
+function teamShowInfo(pID)
+{
+	// Gibt die Infos zur Felge im Layer aus
+	var html='';
+	html+='<table cellspacing="0" cellpadding="0" border="0" width="300" bgcolor="#EFEFEF">';
+	html+='<tr><td width="120" height="160">';
+	if (aTeam[pID][2]=='')
+	{
+		html+='<img src="fotos/kein.gif">';
+	}
+	else
+	{
+		html+='<img src="fotos/'+aTeam[pID][2]+'">';
+	}
+	html+='</td>';
+	html+='<td width="180" class="teamDetail">';
+	html+='<span class="teamHead">'+aTeam[pID][0]+'</span><br>';
+	html+=aTeam[pID][1]+'<br>';
+	html+='</td>';
+	html+='</tr>';
+	html+='</table>';
+	dDetail=new DynLayer("divDetail");
+	dDetail.write(html);
+}
+
+
+
+function html2text(pHtml)
+{
+	// wandelt die HTML-Umlaute in normale um
+	var altText='';
+	altText=pHtml;
+	altText = altText.replace(/&Auml;/,"Ä");
+	altText = altText.replace(/&Ouml;/,"Ö");
+	altText = altText.replace(/&Uuml;/,"Ü");
+	altText = altText.replace(/&auml;/,"ä");
+	altText = altText.replace(/&ouml;/,"ö");
+	altText = altText.replace(/&uuml;/,"ü");
+	altText = altText.replace(/&szlig;/,"ß");
+	return altText;
+}	
+

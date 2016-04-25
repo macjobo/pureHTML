@@ -1,0 +1,172 @@
+<!-- 
+  Author: P.I.C.S. Salzburg, http://www.pics.co.at, office@pics.co.at
+  Page: menu.htm
+  Desc: Menue/Navigation
+  date: 08-05-2001 wt
+  (c) 2001 by Ing. Christian Groesswang / P.I.C.S.
+-->
+
+<html>
+<head>
+	<title>Menue/Navigation</title>
+	<SCRIPT LANGUAGE="JavaScript" SRC="js/imgchange.js"></SCRIPT>
+	<SCRIPT LANGUAGE="JavaScript" SRC="js/dynlayer.js"></SCRIPT>
+	
+<script language="JavaScript">
+<!--
+				
+	var menuActive=-1;
+	var menuImages=new Array();
+	menuImages[1]=new Array('images/txt_home.gif','images/txt_home_over.gif');
+	menuImages[2]=new Array('images/txt_unternehmen.gif','images/txt_unternehmen_over.gif');
+	menuImages[3]=new Array('images/txt_dienst.gif','images/txt_dienst_over.gif');
+	menuImages[4]=new Array('images/txt_team.gif','images/txt_team_over.gif');
+	menuImages[5]=new Array('images/txt_partner.gif','images/txt_partner_over.gif');
+	menuImages[6]=new Array('images/txt_kontakt.gif','images/txt_kontakt_over.gif');
+	menuImages[7]=new Array('images/txt_preisliste.gif','images/txt_preisliste_over.gif');
+	menuImages[8]=new Array('images/txt_agb.gif','images/txt_agb_over.gif');
+
+	function menuClick(nr)
+	{
+		if (menuActive>0)
+		{
+			// altes deaktivieren
+			changeImage('divLink'+menuActive,'imgmk'+menuActive,menuImages[menuActive][0]);
+		}
+		menuActive=nr;
+		// neues aktivieren
+		changeImage('divLink'+menuActive,'imgmk'+menuActive,menuImages[menuActive][1]);
+	}
+
+	function menuOver(nr)
+	{
+		if (menuActive!=nr)
+		{
+			changeImage('divLink'+nr,'imgmk'+nr,menuImages[nr][1])
+		}
+	}
+
+	function menuOut(nr)
+	{
+		if (menuActive!=nr)
+		{
+			changeImage('divLink'+nr,'imgmk'+nr,menuImages[nr][0])
+		}
+	}
+//-->
+</SCRIPT>	
+	
+</head>
+
+<body bgcolor="#ACACAC">
+
+<!-- LOGO-SAR -->
+<div style="position:absolute; left:11; top:18;">
+<img src="images/logo_menu.gif" width="120" height="57" alt="" border="0">
+</div>
+
+<!-- LOGO-SBG -->
+<div style="position:absolute; left:4; top:380;">
+<img src="images/sbg.gif" width="131" height="47" alt="" border="0">
+</div>
+
+<!-- Buttons -->
+<div style="position:absolute; left:11; top:120;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<div style="position:absolute; left:11; top:150;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<div style="position:absolute; left:11; top:180;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<div style="position:absolute; left:11; top:210;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<div style="position:absolute; left:11; top:240;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<div style="position:absolute; left:11; top:270;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<div style="position:absolute; left:11; top:300;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<div style="position:absolute; left:11; top:330;">
+<img src="images/button.gif" width="120" height="16" alt="" border="0">
+</div>
+
+<!-- TEXTLAYER -->
+<div id="divLink1" style="position:absolute; left:5; top:117;">
+<a href="main.htm" target="fmain" 
+	onmouseover="menuOver(1); status='Zur Startseite'; return true;" 
+	onmouseout="menuOut(1); status=''; return true;" 
+	onClick="menuClick(1)"><img 
+	src="images/txt_home.gif" width="115" height="26" alt="" border="0" name="imgmk1"></a>
+</div>
+
+<div id="divLink2" style="position:absolute; left:5; top:147;">
+<a href="unternehmen.htm" target="fmain" 
+	onmouseover="menuOver(2); status='&Uuml;ber unser Unternehmen'; return true;" 
+	onmouseout="menuOut(2); status=''; return true;" 
+	onClick="menuClick(2)"><img 
+	src="images/txt_unternehmen.gif" width="115" height="26" alt="" border="0" name="imgmk2"></a>
+</div>
+
+<div id="divLink3" style="position:absolute; left:5; top:177;">
+<a href="dienstleistung.htm" target="fmain" 
+	onmouseover="menuOver(3); status='SAR Dienstleistungen'; return true;" 
+	onmouseout="menuOut(3); status=''; return true;" 
+	onClick="menuClick(3)"><img 
+	src="images/txt_dienst.gif" width="115" height="26" alt="" border="0" name="imgmk3"></a>
+</div>
+
+<div id="divLink4" style="position:absolute; left:5; top:207;">
+<a href="team.htm" target="fmain" 
+	onmouseover="menuOver(4); status='Ihr SAR-Team'; return true;" 
+	onmouseout="menuOut(4); status=''; return true;" 
+	onClick="menuClick(4)"><img 
+	src="images/txt_team.gif" width="115" height="26" alt="" border="0" name="imgmk4"></a>
+</div>
+
+<div id="divLink5" style="position:absolute; left:5; top:237;">
+<a href="partner.htm" target="fmain" 
+	onmouseover="menuOver(5); status='Unsere Partner'; return true;" 
+	onmouseout="menuOut(5); status=''; return true;" 
+	onClick="menuClick(5)"><img 
+	src="images/txt_partner.gif" width="115" height="26" alt="" border="0" name="imgmk5"></a>
+</div>
+
+<div id="divLink6" style="position:absolute; left:5; top:267;">
+<a href="kontakt.htm" target="fmain" 
+	onmouseover="menuOver(6); status='Kontaktieren Sie uns'; return true;" 
+	onmouseout="menuOut(6); status=''; return true;" 
+	onClick="menuClick(6)"><img 
+	src="images/txt_kontakt.gif" width="115" height="26" alt="" border="0" name="imgmk6"></a>
+</div>
+
+<div id="divLink7" style="position:absolute; left:5; top:297;">
+<a href="preise.pdf" target="_blank" 
+	onmouseover="menuOver(7); status='Unsere Preise'; return true;" 
+	onmouseout="menuOut(7); status=''; return true;" 
+	onClick="menuClick(7)"><img 
+	src="images/txt_preisliste.gif" width="115" height="26" alt="" border="0" name="imgmk7"></a>
+</div>
+
+<div id="divLink8" style="position:absolute; left:5; top:327;">
+<a href="agb.pdf" target="_blank" 
+	onmouseover="menuOver(8); status='Unsere AGB&rsquo;s'; return true;" 
+	onmouseout="menuOut(8); status=''; return true;" 
+	onClick="menuClick(8)"><img 
+	src="images/txt_agb.gif" width="115" height="26" alt="" border="0" name="imgmk8"></a>
+</div>
+
+</body>
+</html>
